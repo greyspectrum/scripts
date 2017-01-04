@@ -35,6 +35,8 @@ sudo apt-get install ansible
 
 # Create SSH keys on the remote host:
 
+echo "Creating ssh keypair..."
+
 SSH_CONFIG="/etc/ssh/ssh_config"
 
 BACKUP_SSH_CONFIG="/etc/ssh/ssh_config.bak"
@@ -82,23 +84,22 @@ mv $SECURE_SSH_CONFIG $SSH_CONFIG
 # Generate client ssh keys
 
 ssh-keygen -t ed25519 -o -a 100
-ssh-keygen -t rsa -b 4096 -o -a 100
 
-echo -e "Your new keys are available in your user's ~/.ssh directory. The public key (the one you can share) is called id_rsa.pub. The private key (the one that you keep secure) is called id_rsa.\nYou can add them to your DigitalOcean control panel to allow you to embed your SSH key into newly created droplets. This will allow your Ansible droplet to SSH into your new droplets immediately, without any other authentication.\nTo do this, click on the \"SSH Keys\" link at: https://cloud.digitalocean.com/settings/security\nEnter the name you want associated with this key into the top field, then copy your public key (displayed below) into the second field in the DigitalOcean control panel."
+echo -e "\n\nYour new SSH key has been created!\n==================================\n\nYour new keys are available in your user's ~/.ssh directory. The public key (the one you can share) is called id_rsa.pub. The private key (the one that you keep secure) is called id_rsa.\n\nYou can add them to your DigitalOcean control panel to allow you to embed your SSH key into newly created droplets. This will allow your Ansible droplet to SSH into your new droplets immediately, without any other authentication.\n\nTo do this, click on the \"SSH Keys\" link at: https://cloud.digitalocean.com/settings/security\n\nEnter the name you want associated with this key into the top field, then copy your public key (displayed below) into the second field in the DigitalOcean control panel."
 
 cat ~/.ssh/id_rsa.pub
 
-echo -e "Now, in the DigitalOcean control panel, click \"Create SSH Key\" to add your key to the control panel. Now, whenever you create a new droplet, you will be able to embed your public SSH key into the new server, allowing you to communicate with your Ansible instance. You just need to select the key in the \"Add optional SSH Keys\" section of the droplet creation process."
+echo -e "\n\nNow, in the DigitalOcean control panel, click \"Create SSH Key\" to add your key to the control panel. Now, whenever you create a new droplet, you will be able to embed your public SSH key into the new server, allowing you to communicate with your Ansible instance. You just need to select the key in the \"Add optional SSH Keys\" section of the droplet creation process."
 
 # Configure Ansible to control remote hosts:
 
-echo -e "Great. Now we are going to configure Ansible to recognize and connect to the remote hosts we wish to control. Ansible's remote hosts are organized by group names.\nWhat would you like to name the first group?"
+echo -e "\n\nGreat. Now we are going to configure Ansible to recognize and connect to the remote hosts we wish to control. Ansible's remote hosts are organized by group names.\n\nWhat would you like to name the first group?"
 
 read vargroupname
 
 sed -e "\[$vargroupname]" /etc/ansible/hosts
 
-echo "What is the IP address of the first host?"
+echo "\n\nWhat is the IP address of the first host?"
 
 read varip
 
