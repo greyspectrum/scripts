@@ -2,7 +2,7 @@
 
 ##############################################################################
 # install-ansible
-# -----------------
+# ---------------
 # An Ansible installation script, for DigitalOcean.
 #
 # :author: greyspectrum
