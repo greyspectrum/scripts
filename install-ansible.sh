@@ -23,7 +23,7 @@
 #
 # After you have copied the file to the remote host, just ssh to it and run this script.
 
-echo "Starting Ansible Installation..."
+echo -e "\n\nStarting Ansible Installation...\n================================="
 
 # Install Ansible:
 
