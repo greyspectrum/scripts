@@ -27,9 +27,16 @@ echo "Starting Ansible Installation..."
 
 # Install Ansible:
 
+echo -e "\n\nUpdating apt cache..."
 sudo apt-get update
+
+echo -e "\n\nInstalling dependencies..."
 sudo apt-get install python-software-properties
+
+echo -e "\n\nAdding the Ansible apt repository..."
 sudo add-apt-repository ppa:rquillo/ansible
+
+echo -e "\n\nInstalling Ansible..."
 sudo apt-get update
 sudo apt-get install ansible
 
