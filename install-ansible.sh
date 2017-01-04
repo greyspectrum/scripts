@@ -89,3 +89,17 @@ echo -e "Your new keys are available in your user's ~/.ssh directory. The public
 cat ~/.ssh/id_rsa.pub
 
 echo -e "Now, in the DigitalOcean control panel, click \"Create SSH Key\" to add your key to the control panel. Now, whenever you create a new droplet, you will be able to embed your public SSH key into the new server, allowing you to communicate with your Ansible instance. You just need to select the key in the \"Add optional SSH Keys\" section of the droplet creation process."
+
+# Configure Ansible to control remote hosts:
+
+echo -e "Great. Now we are going to configure Ansible to recognize and connect to the remote hosts we wish to control. Ansible's remote hosts are organized by group names.\nWhat would you like to name the first group?"
+
+read vargroupname
+
+sed -e "\[$vargroupname]" /etc/ansible/hosts
+
+echo "What is the IP address of the first host?"
+
+read varip
+
+sed -e "\host1 ansible_ssh_host=$varip" /etc/ansible/hosts
