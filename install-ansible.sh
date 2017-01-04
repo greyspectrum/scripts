@@ -10,7 +10,7 @@
 # :version: 0.1.0
 ##############################################################################
 
-# Perhaps it is ironic to use a bash script to install Ansible, but if Ansible
+# Perhaps it is ironic to use a shell script to install Ansible, but if Ansible
 # orchestrates all who are not Ansible, who orchestrates Ansible?
 #
 # To get started, copy this file to your remote host where you want to install Ansible,
