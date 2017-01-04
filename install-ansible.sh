@@ -27,22 +27,22 @@ echo -e "\n\nStarting Ansible Installation...\n=================================
 
 # Install Ansible:
 
-echo -e "\n\nUpdating apt cache..."
+echo -e "\n\nUpdating apt cache...\n"
 sudo apt-get update
 
-echo -e "\n\nInstalling dependencies..."
+echo -e "\n\nInstalling dependencies...\n"
 sudo apt-get install python-software-properties
 
-echo -e "\n\nAdding the Ansible apt repository..."
+echo -e "\n\nAdding the Ansible apt repository...\n"
 sudo add-apt-repository ppa:rquillo/ansible
 
-echo -e "\n\nInstalling Ansible..."
+echo -e "\n\nInstalling Ansible...\n"
 sudo apt-get update
 sudo apt-get install ansible
 
 # Create SSH keys on the remote host:
 
-echo -e "\n\nCreating SSH keypair...\n========================"
+echo -e "\n\nCreating SSH keypair...\n========================\n"
 
 SSH_CONFIG="/etc/ssh/ssh_config"
 
