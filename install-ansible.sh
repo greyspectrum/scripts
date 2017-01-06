@@ -92,7 +92,7 @@ mv $SECURE_SSH_CONFIG $SSH_CONFIG
 
 ssh-keygen -t ed25519 -o -a 100
 
-echo -e "\n\nYour new SSH key has been created!\n==================================\n\nYour new keys are available in your user's ~/.ssh directory. \nThe public key (the one you can share) is called id_rsa.pub. \nThe private key (the one that you keep secure) is called id_rsa.\n\nYou can add them to your DigitalOcean control panel\n to allow you to embed your SSH key into newly created droplets.\n This will allow your Ansible droplet to SSH into your new droplets immediately, without any other authentication.\n\nTo do this, click on the \"SSH Keys\" link at: https://cloud.digitalocean.com/settings/security\n\nEnter the name you want associated with this key into the top field, then copy your public key:\n\n"
+echo -e "\n\nYour new SSH key has been created!\n==================================\n\nYour new keys are available in your user's ~/.ssh directory. \nThe public key (the one you can share) is called id_ed25519.pub.\nThe private key (the one that you keep secure) is called id_ed25519.\n\nYou can add them to your DigitalOcean control panel to allow\nyou to embed your SSH key into newly created droplets.\n This will allow your Ansible droplet to SSH into your new droplets immediately, without any other authentication.\n\nTo do this, click on the \"SSH Keys\" link at: https://cloud.digitalocean.com/settings/security\n\nEnter the name you want associated with this key into the top field, then copy your public key:\n\n"
 
 cat ~/.ssh/id_ed25519.pub
 
