@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-# Configure SSH and enable the firewall for a new remote host.
+# Configures SSH and enable the firewall for a new remote host.
 
 # Define variables (edit these if you want to test this script without altering your ssh_config)
 
