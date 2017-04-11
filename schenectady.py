@@ -49,7 +49,7 @@ i’m so sorry god your face asking me
 i don’t understand and i smother you
 with gauze and tears and rain and i love you
 in the soot smeared smile of it’s ok,
-it’s ok.'''
+it’s ok.\n'''
 
 for char in string:
     sys.stdout.write(char)
