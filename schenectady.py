@@ -45,6 +45,7 @@ fifty tons of American cruelty
 spinning beside my head and i watched you
 get swallowed by the hillside and vanish
 behind a boxcar in the bend, 
+
 i’m so sorry god your face asking me
 i don’t understand and i smother you
 with gauze and tears and rain and i love you
