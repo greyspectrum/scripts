@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-# Installs Packstack. You will need a machine with at least 8GB of volatile memory and 80GB of disk.
+# Installs Packstack. You will need a machine running CentOS with at least 8GB of volatile memory and 80GB of disk.
 
 sudo yum install system-config-firewall
 system-config-firewall
