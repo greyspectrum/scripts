@@ -5,7 +5,7 @@
 sudo yum update
 sudo yum upgrade
 sudo yum install system-config-firewall
-system-config-firewall
+sudo system-config-firewall
 sudo yum install -y centos-release-openstack-newton
 sudo yum install -y openstack-packstack
 sudo packstack --allinone
