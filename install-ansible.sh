@@ -110,7 +110,7 @@ echo -e "\n\nInstalling dependencies...\n"
 sudo apt-get install python-software-properties -y
 
 echo -e "\n\nAdding the Ansible apt repository...\n"
-sudo add-apt-repository ppa:rquillo/ansible
+sudo add-apt-repository ppa:rquillo/ansible -y
 
 echo -e "\n\nInstalling Ansible...\n"
 sudo apt-get update
