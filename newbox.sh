@@ -64,7 +64,7 @@ while true; do
         [Yy]* ) echo -e "\nGenerating keys...";
                 ssh-keygen -t ed25519 -o -a 100;
                 ssh-keygen -t rsa -b 4096 -o -a 100; break;;
-        [Nn]* ) exit;;
+        [Nn]* ) break;;
         * ) echo "Please answer y (yes) or n (no).";;
     esac
 done
