@@ -1,6 +1,14 @@
 #!/usr/bin/env bash
 
-# Configures SSH, enables the firewall, and sets up a dummy user with sudo access, in order to quickly deploy a testing environment on a new remote host.
+##############################################################################
+# new-box
+# -----------
+# Configures SSH and enables the firewall for a new testing VM. 
+#
+# :author: greyspectrum
+# :date: 3 July 2017
+# :version: 0.1.0
+##############################################################################
 
 # Define variables (edit these if you want to test this script without altering your ssh_config)
 
@@ -67,15 +75,4 @@ ufw allow OpenSSH
 ufw enable
 ufw status
 
-# Create new user
-
-while true; do
-    read -p "Create new user sarah?" yn
-    case $yn in
-        [Yn]* ) adduser sarah;
-                usermod -aG sudo sarah; break;;
-        [Nn]* ) exit;;
-        * ) echo "Please answer y (yes) or n (no).";;
-    esac
-done
 echo "==> DONE!"
