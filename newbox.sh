@@ -1,22 +1,6 @@
 #!/usr/bin/env bash
 
-# Configures SSH and enable the firewall for a new remote host.
-
-#!/bin/bash
-
-##############################################################################
-# auto-ssh
-# -----------
-# Edits your ssh_config to set secure default ciphers, modes, MACs, & settings.
-#
-# Chosen defaults are based on original work by Stribika, available here:
-#
-# https://stribika.github.io/2015/01/04/secure-secure-shell.html
-#
-# :author: greyspectrum
-# :date: 25 July 2016
-# :version: 0.9.1
-##############################################################################
+# Configures SSH, enables the firewall, and sets up a dummy user with sudo access, in order to quickly deploy a testing environment on a new remote host.
 
 # Define variables (edit these if you want to test this script without altering your ssh_config)
 
