@@ -2,6 +2,22 @@
 
 # Configures SSH and enable the firewall for a new remote host.
 
+#!/bin/bash
+
+##############################################################################
+# auto-ssh
+# -----------
+# Edits your ssh_config to set secure default ciphers, modes, MACs, & settings.
+#
+# Chosen defaults are based on original work by Stribika, available here:
+#
+# https://stribika.github.io/2015/01/04/secure-secure-shell.html
+#
+# :author: greyspectrum
+# :date: 25 July 2016
+# :version: 0.9.1
+##############################################################################
+
 # Define variables (edit these if you want to test this script without altering your ssh_config)
 
 SSH_CONFIG="/etc/ssh/ssh_config"
@@ -48,12 +64,34 @@ fi
 
 mv $SECURE_SSH_CONFIG $SSH_CONFIG
 
-# Enable Firewall
+# Generate client ssh keys
+
+while true; do
+    read -p "Would you like to generate ssh keys now? If you are running this script on a remote host, this is probably not necessary." yn
+    case $yn in
+        [Yy]* ) echo -e "\nGenerating keys...";
+                ssh-keygen -t ed25519 -o -a 100;
+                ssh-keygen -t rsa -b 4096 -o -a 100; break;;
+        [Nn]* ) exit;;
+        * ) echo "Please answer y (yes) or n (no).";;
+    esac
+done
+
+# Enable firewall
 
 ufw allow OpenSSH
-
 ufw enable
-
 ufw status
 
-echo "All done!"
+# Create new user
+
+while true; do
+    read -p "Create new user sarah?" yn
+    case $yn in
+        [Yn]* ) adduser sarah;
+                usermod -aG sudo sarah; break;;
+        [Nn]* ) exit;;
+        * ) echo "Please answer y (yes) or n (no).";;
+    esac
+done
+echo "==> DONE!"
