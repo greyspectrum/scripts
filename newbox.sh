@@ -51,7 +51,7 @@ mv $SECURE_SSH_CONFIG $SSH_CONFIG
 # Generate client ssh keys
 
 while true; do
-    read -p "Would you like to generate ssh keys now? If you are running this script on a remote host, this is probably not necessary." yn
+    read -p "Would you like to generate ssh keys now? If you are running this script on a remote host, this is probably not necessary. [y/N] " yn
     case $yn in
         [Yy]* ) echo -e "\nGenerating keys...";
                 ssh-keygen -t ed25519 -o -a 100;
