@@ -72,7 +72,7 @@ done
 # Enable firewall
 
 ufw allow OpenSSH
-ufw enable -y
+ufw --force enable
 ufw status
 
 echo -e "\n==> DONE!"
