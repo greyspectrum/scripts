@@ -75,4 +75,4 @@ ufw allow OpenSSH
 ufw enable
 ufw status
 
-echo "==> DONE!"
+echo -e "\n==> DONE!"
