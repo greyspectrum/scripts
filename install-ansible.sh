@@ -3,46 +3,35 @@
 ##############################################################################
 # install-ansible
 # ---------------
-# An Ansible installation script, for DigitalOcean.
+# An Ansible installation script.
+#
+# If Ansible configures all who are not Ansible, who configures Ansible?
 #
 # :author: greyspectrum
-# :date: 3 January 2017
+# :date: 3 July 2017
 # :version: 0.1.0
 ##############################################################################
 
-# Perhaps it is ironic to use a shell script to configure Ansible, but if Ansible
-# configures all who are not Ansible, who configures Ansible?
-#
-# To get started, copy this file to your remote host where you want to install Ansible,
-# using the following command:
-#
-# scp ~/pathtoscript/install-ansible.sh root@remoteip:install-ansible.sh
-#
-# Be sure to replace "pathtoscript" with the path to this script on your local machine,
-# as well as "remoteip", which should be replaced with the IP address of the remote host.
-#
-# After you have copied the file to the remote host, just ssh to it and run this script.
+cat << "EOF"
 
-echo -e "\n\nStarting Ansible Installation...\n================================="
+      ___           ___           ___                       ___           ___       ___
+     /\  \         /\__\         /\  \          ___        /\  \         /\__\     /\  \    
+    /::\  \       /::|  |       /::\  \        /\  \      /::\  \       /:/  /    /::\  \   
+   /:/\:\  \     /:|:|  |      /:/\ \  \       \:\  \    /:/\:\  \     /:/  /    /:/\:\  \  
+  /::\~\:\  \   /:/|:|  |__   _\:\~\ \  \      /::\__\  /::\~\:\__\   /:/  /    /::\~\:\  \ 
+ /:/\:\ \:\__\ /:/ |:| /\__\ /\ \:\ \ \__\  __/:/\/__/ /:/\:\ \:|__| /:/__/    /:/\:\ \:\__\
+ \/__\:\/:/  / \/__|:|/:/  / \:\ \:\ \/__/ /\/:/  /    \:\~\:\/:/  / \:\  \    \:\~\:\ \/__/
+      \::/  /      |:/:/  /   \:\ \:\__\   \::/__/      \:\ \::/  /   \:\  \    \:\ \:\__\  
+      /:/  /       |::/  /     \:\/:/  /    \:\__\       \:\/:/  /     \:\  \    \:\ \/__/  
+     /:/  /        /:/  /       \::/  /      \/__/        \::/__/       \:\__\    \:\__\    
+     \/__/         \/__/         \/__/                     ~~            \/__/     \/__/    
 
-# Install Ansible:
+EOF
 
-echo -e "\n\nUpdating apt cache...\n"
-sudo apt-get update
+echo -e "\n\nWelcome to Ansible Setup!\n========================\n"
+echo -e "\n\nConfiguring SSH...\n========================\n"
 
-echo -e "\n\nInstalling dependencies...\n"
-sudo apt-get install python-software-properties
-
-echo -e "\n\nAdding the Ansible apt repository...\n"
-sudo add-apt-repository ppa:rquillo/ansible
-
-echo -e "\n\nInstalling Ansible...\n"
-sudo apt-get update
-sudo apt-get install ansible
-
-# Create SSH keys on the remote host:
-
-echo -e "\n\nCreating SSH keypair...\n========================\n"
+# Define variables (edit these if you want to test this script without altering your ssh_config)
 
 SSH_CONFIG="/etc/ssh/ssh_config"
 
@@ -90,26 +79,41 @@ mv $SECURE_SSH_CONFIG $SSH_CONFIG
 
 # Generate client ssh keys
 
+echo -e "\n\nGenerating SSH keypair...\n========================\n"
 ssh-keygen -t ed25519 -o -a 100
+ssh-keygen -t rsa -b 4096 -o -a 100
 
-echo -e "\n\nYour new SSH key has been created!\n==================================\n\nYour new keys are available in your user's ~/.ssh directory. \nThe public key (the one you can share) is called id_ed25519.pub.\nThe private key (the one that you keep secure) is called id_ed25519.\n\nYou can add them to your DigitalOcean control panel to allow\nyou to embed your SSH key into newly created droplets.\n This will allow your Ansible droplet to SSH into your new droplets immediately, without any other authentication.\n\nTo do this, click on the \"SSH Keys\" link at: https://cloud.digitalocean.com/settings/security\n\nEnter the name you want associated with this key into the top field, then copy your public key:\n\n"
+#Enable firewall
 
-cat ~/.ssh/id_ed25519.pub
+echo -e "\n\nEnabling firewall...\n========================\n"
+ufw allow OpenSSH
+ufw --force enable
+ufw status
 
-echo -e "\n\ninto the second field in the DigitalOcean control panel."
+# Add new user
 
-echo -e "\n\nNow, in the DigitalOcean control panel, click \"Create SSH Key\" to add your key to the control panel. Whenever you create a new droplet, you will be able to embed your public SSH key into the new server, allowing you to communicate with your Ansible instance. You just need to select the key in the \"Add optional SSH Keys\" section of the droplet creation process."
+echo -e "\n\nAdding a new user...\n========================\n"
+echo "Enter a name to create a user: "
+read user
+adduser $user
+usermod -aG sudo $user
+sudo su - $user
 
-# Configure Ansible to control remote hosts:
+echo -e "\n\nStarting Ansible Installation...\n================================="
 
-echo -e "\n\nGreat. Now we are going to configure Ansible to recognize and connect to the remote hosts we wish to control. Ansible's remote hosts are organized by group names.\n\nWhat would you like to name the first group?"
+# Install Ansible:
 
-read vargroupname
+echo -e "\n\nUpdating apt cache...\n"
+sudo apt-get update
 
-sed -e "\[$vargroupname]" /etc/ansible/hosts
+echo -e "\n\nInstalling dependencies...\n"
+sudo apt-get install python-software-properties -y
 
-echo "\n\nWhat is the IP address of the first host?"
+echo -e "\n\nAdding the Ansible apt repository...\n"
+sudo add-apt-repository ppa:rquillo/ansible
 
-read varip
+echo -e "\n\nInstalling Ansible...\n"
+sudo apt-get update
+sudo apt-get install ansible -y
 
-sed -e "\host1 ansible_ssh_host=$varip" /etc/ansible/hosts
+echo -e"\n\n==> DONE!\n"
