@@ -77,7 +77,9 @@ ufw status
 
 # Add new user
 
-adduser grey
-usermod -aG sudo grey
+read -p "Enter a name to create a user: " user
+USER="user"
+adduser $USER
+usermod -aG sudo $USER
 
 echo -e "\n==> DONE!"
