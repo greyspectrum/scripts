@@ -92,12 +92,12 @@ ufw status
 
 # Add new user
 
-echo -e "\n\nAdding a new user...\n========================\n"
-echo "Enter a name to create a user: "
-read user
-adduser $user
-usermod -aG sudo $user
-sudo su - $user
+# echo -e "\n\nAdding a new user...\n========================\n"
+# echo "Enter a name to create a user: "
+# read user
+# adduser $user
+# usermod -aG sudo $user
+# sudo su - $user
 
 echo -e "\n\nStarting Ansible Installation...\n================================="
 
