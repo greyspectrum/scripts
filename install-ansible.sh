@@ -116,4 +116,4 @@ echo -e "\n\nInstalling Ansible...\n"
 sudo apt-get update
 sudo apt-get install ansible -y
 
-echo -e"\n\n==> DONE!\n"
+echo -e "\n\n==> DONE!\n"
