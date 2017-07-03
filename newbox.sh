@@ -77,9 +77,9 @@ ufw status
 
 # Add new user
 
-read -p "Enter a name to create a user: " user
-USER="user"
-adduser $USER
-usermod -aG sudo $USER
+echo "Enter a name to create a user: "
+read user
+adduser $user
+usermod -aG sudo $user
 
 echo -e "\n==> DONE!"
