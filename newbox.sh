@@ -75,4 +75,9 @@ ufw allow OpenSSH
 ufw --force enable
 ufw status
 
+# Add new user
+
+adduser grey
+usermod -aG sudo grey
+
 echo -e "\n==> DONE!"
