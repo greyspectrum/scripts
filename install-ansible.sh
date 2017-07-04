@@ -5,7 +5,8 @@
 # ---------------
 # An Ansible installation script.
 #
-# If Ansible configures all who are not Ansible, who configures Ansible?
+# If Ansible configures all those, and those only, who
+# do not configure themselves, who configures Ansible?
 #
 # :author: greyspectrum
 # :date: 3 July 2017
