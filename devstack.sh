@@ -1,6 +1,7 @@
 #!/usr/bin/env bash
 
 # Sets up devstack
+# DO NOT USE: This is still buggy.
 
 sudo su -
 sudo useradd -s /bin/bash -d /opt/stack -m stack
