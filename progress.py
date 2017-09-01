@@ -6,7 +6,7 @@ from subprocess import check_output
 import re
 
 du = check_output('du -sh', shell=True)
-print "\n------------------------------TRANSFER PROGRESS------------------------------"
+print "\n------------------------------TRANSFER PROGRESS------------------------------\n"
 print "THE SIZE OF THIS DIRECTORY IS: " + du
 
 n1 = re.search('\d+(?:\.\d+)?', du).group(0)
