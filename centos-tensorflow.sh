@@ -5,6 +5,7 @@
 sudo yum -y install epel-release
 sudo yum -y install gcc gcc-c++ python-pip python-devel atlas atlas-devel gcc-gfortran openssl-devel libffi-devel
 # use pip or pip3 as you prefer for python or python3
+sudo pip install --upgrade pip
 sudo pip install --upgrade virtualenv
 virtualenv --system-site-packages ~/venvs/tensorflow
 source ~/venvs/tensorflow/bin/activate
