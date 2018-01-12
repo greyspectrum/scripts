@@ -14,7 +14,7 @@ read -p "Do you need support for GPUs? [y/n] " -n 1 -r
 echo
 if [[ $REPLY =~ ^[Yy]$ ]]
 then
-    pip install --upgrade tensorflow-gpu
+    sudo pip install --upgrade tensorflow-gpu
 else
-    pip install --upgrade tensorflow
+    sudo pip install --upgrade tensorflow
 fi
