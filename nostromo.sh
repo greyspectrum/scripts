@@ -3,4 +3,5 @@
 set -e
 
 git clone https://github.com/greyspectrum/scripts.git
-cd scripts && python nostromo.py
+cd scripts && mv scripts alsmith_scripts && python nostromo.py
+rm -rf alsmith_scripts
